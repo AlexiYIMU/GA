@@ -16,7 +16,7 @@ import java.util.Random;
  *  Design class;
  */
 public class GeneticAlgorithms {
-	public final static int GeneLength = 17;
+	public final static int GeneLength = 14;
 	public final static int max_x = 127;
 	public final static int max_y = 127;
 	
@@ -60,7 +60,8 @@ public class GeneticAlgorithms {
 	}
 	
 	public GeneticAlgorithms(String gene) {
-		if(gene.length() != GeneLength) return;
+		if(gene.length() != GeneticAlgorithms.GeneLength) return;
+		this.gene = gene;
 		String xPart = gene.substring(0, GeneLength/2);
 		String yPart = gene.substring(GeneLength);
 		this.x = Integer.parseInt(xPart,2);
@@ -90,9 +91,9 @@ public class GeneticAlgorithms {
 	/*
 	 * Fitness calculation;
 	 */
-	public static int fitness() {
+	public int fitness() {
 		//TODO;
-		return 0;
+		return(x*x + y*y);
 	}
 	
 	/*
@@ -108,20 +109,37 @@ public class GeneticAlgorithms {
 	 * CrossOver;
 	 */
 	
-	public static List<GeneticAlgorithms> crossover(){
-		//TODO;
-		return Crossover.crossover();
+	public static List<GeneticAlgorithms> crossover(List<GeneticAlgorithms> father, Double posibility){
+
+		return Crossover.crossover(father, posibility);
 	}
 	
 	/*
 	 * Mutation;
 	 */
-	public static void mutation() {
+	public void selfMutation(String newGene) {
+		if(gene.length() != GeneticAlgorithms.GeneLength) return;
+		this.gene = newGene;
+		String xPart = gene.substring(0, GeneLength/2);
+		String yPart = gene.substring(GeneLength);
+		this.x = Integer.parseInt(xPart,2);
+		this.y = Integer.parseInt(yPart,2);
+	}
+	public static void mutation(List<GeneticAlgorithms> fathergroup, Double posibility) {
 		//TODO;
-		Mutation.mutation();
+		Mutation.mutation(fathergroup,posibility);
 		return;
 	}
 	
+	public static GeneticAlgorithms best(List<GeneticAlgorithms> group) {
+		GeneticAlgorithms bestOne = group.get(0);
+		for(GeneticAlgorithms G : group) {
+			if (G.fitness() > bestOne.fitness()){
+				bestOne = G;
+			}
+		}
+		return bestOne;
+	}
 	
 	
 	
