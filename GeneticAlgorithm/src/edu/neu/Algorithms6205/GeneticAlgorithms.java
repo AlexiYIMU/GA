@@ -47,12 +47,12 @@ public class GeneticAlgorithms {
 		this.x = x;
 		this.y = y;
 		String temp = Integer.toBinaryString(x);
-		for(int i = 0; i<GeneLength/2; i++) {
+		for(int i = temp.length(); i<GeneLength/2; i++) {
 			temp = "0" + temp;
 		}
 		gene = temp;
 		temp = Integer.toBinaryString(y);
-		for(int i = 0; i<GeneLength/2; i++) {
+		for(int i = temp.length(); i<GeneLength/2; i++) {
 			temp = "0" + temp;
 		}
 		
@@ -62,8 +62,8 @@ public class GeneticAlgorithms {
 	public GeneticAlgorithms(String gene) {
 		if(gene.length() != GeneticAlgorithms.GeneLength) return;
 		this.gene = gene;
-		String xPart = gene.substring(0, GeneLength/2);
-		String yPart = gene.substring(GeneLength);
+		String xPart = gene.substring(0, GeneticAlgorithms.GeneLength/2);
+		String yPart = gene.substring(GeneticAlgorithms.GeneLength/2);
 		this.x = Integer.parseInt(xPart,2);
 		this.y = Integer.parseInt(yPart,2);
 	}
@@ -100,9 +100,9 @@ public class GeneticAlgorithms {
 	 * Selection calculation;
 	 */
 	
-	public static List<GeneticAlgorithms> selection(){
+	public static List<GeneticAlgorithms> selection(List<GeneticAlgorithms> fatherGroup,int sonGroupSize){
 		//TODO;
-		return Selection.select();
+		return Selection.select(fatherGroup,sonGroupSize);
 	}
 	
 	/*
@@ -118,10 +118,10 @@ public class GeneticAlgorithms {
 	 * Mutation;
 	 */
 	public void selfMutation(String newGene) {
-		if(gene.length() != GeneticAlgorithms.GeneLength) return;
+		if(newGene.length() != GeneticAlgorithms.GeneLength) return;
 		this.gene = newGene;
-		String xPart = gene.substring(0, GeneLength/2);
-		String yPart = gene.substring(GeneLength);
+		String xPart = newGene.substring(0, GeneticAlgorithms.GeneLength/2);
+		String yPart = newGene.substring(GeneticAlgorithms.GeneLength/2);
 		this.x = Integer.parseInt(xPart,2);
 		this.y = Integer.parseInt(yPart,2);
 	}
@@ -140,13 +140,4 @@ public class GeneticAlgorithms {
 		}
 		return bestOne;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

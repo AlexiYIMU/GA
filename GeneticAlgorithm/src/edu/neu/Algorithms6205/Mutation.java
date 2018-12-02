@@ -17,7 +17,7 @@ public class Mutation {
 			for(int i = 0; i<newGene.length();i++) {
 				if(probability > r.nextDouble()) {
 					String replace = newGene.charAt(i) == '0' ? "1" : "0";
-					newGene = newGene.substring(0, i) + replace + newGene.substring(i);
+					newGene = newGene.substring(0, i) + replace + newGene.substring(i+1);
 				}
 			}
 			G.selfMutation(newGene);

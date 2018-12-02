@@ -21,7 +21,7 @@ public class Crossover {
 				int position = r.nextInt(GeneticAlgorithms.GeneLength);
 				String parent1 = father.get(a).getGene();
 				String parent2 = father.get(b).getGene();
-				String son1 = parent1.substring(0, position)+ parent2.substring(position);
+				String son1 = parent1.substring(0,position)+ parent2.substring(position);
 				String son2 = parent2.substring(0,position)+ parent1.substring(position);
 				son.add(new GeneticAlgorithms(son1));
 				son.add(new GeneticAlgorithms(son2));
