@@ -1,5 +1,6 @@
 package edu.neu.Algorithms6205;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +16,7 @@ import java.util.Random;
 /*
  *  Design class;
  */
-public class GeneticAlgorithms {
+public class GeneticAlgorithms implements Serializable{
 	public final static int GeneLength = 14;
 	public final static int max_x = 127;
 	public final static int max_y = 127;
