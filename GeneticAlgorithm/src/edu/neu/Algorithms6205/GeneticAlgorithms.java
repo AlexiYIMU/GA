@@ -77,6 +77,7 @@ public class GeneticAlgorithms implements Serializable{
 	/*
 	 * Initialization;
 	 */
+	
 	public static List<GeneticAlgorithms> initGroup(int size){
 		List<GeneticAlgorithms> firstGen = new ArrayList<>();
 		Random r = new Random();
@@ -89,12 +90,14 @@ public class GeneticAlgorithms implements Serializable{
 		}
 		return firstGen;
 	}
+	
 	/*
 	 * Fitness calculation;
 	 */
+	
 	public int fitness() {
 		//TODO;
-		return(x*x + y*y);
+		return(2*x*x + 3*y*y);
 	}
 	
 	/*
